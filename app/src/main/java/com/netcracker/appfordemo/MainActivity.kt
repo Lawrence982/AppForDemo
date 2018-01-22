@@ -38,11 +38,10 @@ class MainActivity : AppCompatActivity(), RepositoryRecyclerViewAdapter.OnItemCl
         if (viewModel.parent_id == null) {
             viewModel.parent_id = intent.getStringExtra("id")
         }
-toast("login: "+intent.getStringExtra("login")+"pass: "+intent.getStringExtra("pass"))
+        toast("login: "+intent.getStringExtra("login")+"pass: "+intent.getStringExtra("pass"))
+
         viewModel.userDevices.observe(this,
-                Observer<ArrayList<UserDevice>> { it?.let{ repositoryRecyclerViewAdapter.replaceData(it)} })
-
-
+               Observer<ArrayList<UserDevice>> { it?.let{ repositoryRecyclerViewAdapter.replaceData(it)} })
     }
 
     override fun onClick(view: View?) {

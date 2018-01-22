@@ -1,18 +1,14 @@
 package com.netcracker.appfordemo
 
-import android.app.Activity
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
-import android.os.Debug
 import android.util.Log
-import com.netcracker.appfordemo.data.GitRepoRepository
 import com.netcracker.appfordemo.data.UserDeviceRepository
 import com.netcracker.appfordemo.uimodel.UserDevice
 import com.netcracker.appfordemo.extensions.plusAssign
 import com.netcracker.appfordemo.managers.NetManager
-import com.netcracker.appfordemo.uimodel.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
@@ -24,44 +20,17 @@ import io.reactivex.schedulers.Schedulers
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
-    private var gitRepoRepository: GitRepoRepository = GitRepoRepository(NetManager(getApplication()))
-
     private var userDeviceRepository: UserDeviceRepository = UserDeviceRepository(NetManager(getApplication()))
 
     val text = ObservableField("old data")
 
     val isLoading = ObservableField(false)
 
-    var repositories = MutableLiveData<ArrayList<Repository>>()
-
     var userDevices = MutableLiveData<ArrayList<UserDevice>>()
 
     private val compositeDisposable = CompositeDisposable()
 
     var parent_id: String? = null
-
-    fun loadRepositories() {
-        isLoading.set(true)
-        compositeDisposable += gitRepoRepository
-                .getRepositories()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableObserver<ArrayList<Repository>>() {
-
-                    override fun onError(e: Throwable) {
-                        //if some error happens in our data layer our app will not crash, we will
-                        // get error here
-                    }
-
-                    override fun onNext(data: ArrayList<Repository>) {
-                        repositories.value = data
-                    }
-
-                    override fun onComplete() {
-                        isLoading.set(false)
-                    }
-                })
-    }
 
     fun loadUserDevices(parent_id: String) {
         isLoading.set(true)
@@ -97,6 +66,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     init {
-        Log.d("hue", "isLong")
+        Log.d("init", "test")
     }
 }

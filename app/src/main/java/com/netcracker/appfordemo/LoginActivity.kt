@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         LoginActivityUI().setContentView(this)
     }
 
-    fun gotofuck(name:String,pass:String)
+    fun gotoMainActivity(name:String,pass:String)
     {
         startActivity(intentFor<MainActivity>("login" to name,"pass" to pass).singleTop())
     }
@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
 //                    val mainIntent = Intent(ctx, MainActivity::class.java)
 //                    mainIntent.flags = Intent.FLAG_ACTIVITY_SINGLE_TOP
 //                    startActivity(mainIntent    )
-                        ui.owner.gotofuck(name = name.text.toString(),pass = pass.text.toString())
+                        ui.owner.gotoMainActivity(name = name.text.toString(),pass = pass.text.toString())
                     }
                 }
             }
