@@ -16,8 +16,6 @@ import retrofit2.http.Headers
  */
 interface UserDeviceService {
 
-
-
     @Headers("Authorization: Trusted application=\"eShop\", username=\"9149925907113305697\"")
     @GET("/api/v1/portal/get/devices/{parentId}")
     fun getUserDevices(@Path("parentId") @NonNull parentId : String): Observable<List<UserDevice>>
@@ -30,7 +28,7 @@ interface UserDeviceService {
             val retrofit = Retrofit.Builder()
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl("http://10.106.2.128:6957/")
+                    .baseUrl("http://10.106.2.126:6957/")
                     .build()
 
             return retrofit.create(UserDeviceService::class.java);

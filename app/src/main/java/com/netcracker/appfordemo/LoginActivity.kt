@@ -25,11 +25,11 @@ class LoginActivity : AppCompatActivity() {
         override fun createView(ui: AnkoContext<LoginActivity>) = ui.apply {
             verticalLayout {
                 padding = dip(30)
-                var name = editText {
+                val name = editText {
                     hint = "Name"
                     textSize = 24f
                 }
-                var pass = editText {
+                val pass = editText {
                     hint = "Password"
                     textSize = 24f
                 }

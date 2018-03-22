@@ -20,6 +20,7 @@ import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
 import android.Manifest.permission.CAMERA
+import android.app.Activity
 import android.app.TaskStackBuilder
 import android.content.Intent.FLAG_ACTIVITY_SINGLE_TOP
 import android.support.v4.app.NavUtils
@@ -164,6 +165,11 @@ class BarcodeMainActivity : AppCompatActivity(), ZXingScannerView.ResultHandler 
         builder.setMessage(result.text)
         val alert1 = builder.create()
         alert1.show()
+    }
+
+    override fun onBackPressed() {
+        setResult(Activity.RESULT_CANCELED,Intent())
+        finish()
     }
 
     companion object {

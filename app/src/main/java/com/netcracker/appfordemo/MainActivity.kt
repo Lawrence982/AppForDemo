@@ -10,10 +10,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import com.netcracker.appfordemo.databinding.ActivityMainBinding
 import com.netcracker.appfordemo.uimodel.UserDevice
-import android.app.PendingIntent
-import android.app.TaskStackBuilder
-import android.support.v4.app.NavUtils
-import android.widget.Toast
 import org.jetbrains.anko.toast
 
 
@@ -60,6 +56,8 @@ class MainActivity : AppCompatActivity(), RepositoryRecyclerViewAdapter.OnItemCl
             }
         }
     }
+
+
 
 
     override fun onItemClick(position: Int) {
